@@ -61,22 +61,7 @@ function renderHtml(slug, layout = "doc") {
   return views.doc(doc, all);
 }
 
-// ---- Routes ----
-app.get("/", (req, res) => {
-  const html = renderHtml("index", "landing");
-  if (!html) return res.status(404).send(views.render404());
-  res.send(html);
-});
-
-app.get("/:slug(*)", (req, res) => {
-  if (req.path.startsWith("/api/")) return; // skip
-  const slug = req.params.slug.replace(/\.html$/, "");
-  const html = renderHtml(slug);
-  if (!html) return res.status(404).send(views.render404());
-  res.send(html);
-});
-
-// JSON API — AI-manageable
+// ---- API Routes (must be before catch-all) ----
 app.get("/api/content", (req, res) => {
   res.json(allDocs().map(({ slug, title, description, tags, content }) => ({ slug, title, description, tags, content })));
 });
@@ -85,6 +70,20 @@ app.get("/api/content/:slug(*)", (req, res) => {
   const doc = findDoc(req.params.slug);
   if (!doc) return res.status(404).json({ error: "not found" });
   res.json({ slug: doc.slug, title: doc.frontmatter.title, description: doc.frontmatter.description, tags: doc.frontmatter.tags, content: doc.content });
+});
+
+// ---- Static pages ----
+app.get("/", (req, res) => {
+  const html = renderHtml("index", "landing");
+  if (!html) return res.status(404).send(views.render404());
+  res.send(html);
+});
+
+app.get("/:slug(*)", (req, res) => {
+  const slug = req.params.slug.replace(/\.html$/, "");
+  const html = renderHtml(slug);
+  if (!html) return res.status(404).send(views.render404());
+  res.send(html);
 });
 
 app.listen(PORT, () => console.log(`[returns-docs] http://localhost:${PORT}`));
