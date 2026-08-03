@@ -1,0 +1,8 @@
+[build]
+buildCommand = "npm install"
+watchPatterns = ["**"]
+
+[deploy]
+startCommand = "node server.cjs"
+healthcheckPath = "/"
+healthcheckTimeout = 100
