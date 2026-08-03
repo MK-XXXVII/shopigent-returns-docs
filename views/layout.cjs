@@ -145,7 +145,7 @@ function landing(doc, all) {
       <h2 class="text-2xl md:text-3xl font-bold mb-4">Works With Your AI Tools</h2>
       <p class="text-gray-400 max-w-xl mx-auto mb-10">Connect via MCP protocol — use Claude Desktop, Codex, Cursor, or any MCP client to manage returns in natural language.</p>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
-        ${["Claude Desktop", "GitHub Codex", "Cursor", "Grok"].map((name) => `<div class="p-4 rounded-xl" style="background:#12121a;border:1px solid rgba(255,255,255,.06)"><span class="text-sm font-medium">${name}</span></div>`).join("")}
+        ${["Claude Desktop", "OpenAI Codex", "Cursor", "Grok"].map((name) => `<div class="p-4 rounded-xl" style="background:#12121a;border:1px solid rgba(255,255,255,.06)"><span class="text-sm font-medium">${name}</span></div>`).join("")}
       </div>
     </section>
 
