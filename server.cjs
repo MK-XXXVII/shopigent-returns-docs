@@ -35,13 +35,14 @@ function parseMd(filePath) {
   return { frontmatter: data, html, content };
 }
 
-function allDocs() {
-  return listFiles(CONTENT_DIR).map((f) => {
+function allDocs(excludeBlog = true) {
+  const all = listFiles(CONTENT_DIR).map((f) => {
     const full = path.join(CONTENT_DIR, f);
     const { frontmatter, html, content } = parseMd(full);
     const slug = f.replace(/\.md$/, "").replace(/\\/g, "/");
     return { slug, title: frontmatter.title || slug, description: frontmatter.description || "", tags: frontmatter.tags || [], html, content, frontmatter };
   });
+  return excludeBlog ? all.filter((d) => !d.slug.startsWith("blog/")) : all;
 }
 
 function findDoc(slug) {
@@ -80,7 +81,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/blog", (req, res) => {
-  const posts = allDocs().filter((d) => d.slug.startsWith("blog/")).sort((a, b) => {
+  const posts = allDocs(false).filter((d) => d.slug.startsWith("blog/")).sort((a, b) => {
     const dateA = a.frontmatter.date || "";
     const dateB = b.frontmatter.date || "";
     return dateB.localeCompare(dateA);
