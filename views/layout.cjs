@@ -8,8 +8,8 @@ const esc = (s) => String(s || "")
 function nav(currentSlug) {
   const links = [
     { href: "/", label: "Home" },
-    { href: "/guides/getting-started", label: "Guides" },
-    { href: "/reference/api", label: "API" },
+    { href: "/guides/getting-started", label: "Docs" },
+    { href: "/blog", label: "Blog" },
     { href: "/pricing", label: "Pricing" },
   ];
   return `
@@ -198,8 +198,29 @@ function doc(doc, all) {
   return shell(body, doc.slug);
 }
 
+function blogPage(blogPosts) {
+  const body = `
+    <div class="max-w-4xl mx-auto px-4 py-12">
+      <h1 class="text-3xl md:text-4xl font-extrabold mb-2" style="background:linear-gradient(135deg,#fff,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Blog</h1>
+      <p class="text-gray-400 mb-10">Tips, guides, and insights about AI-powered return management for Shopify.</p>
+      <div class="grid gap-6">
+        ${blogPosts.map((p) => `
+          <a href="/${p.slug}" class="block p-6 rounded-xl no-underline transition hover:bg-white/5" style="background:#12121a;border:1px solid rgba(255,255,255,.06)">
+            <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
+              ${(p.frontmatter.tags || []).slice(0, 3).map((t) => `<span style="background:rgba(124,58,237,.15);color:#a78bfa;padding:2px 8px;border-radius:4px">${t}</span>`).join("")}
+            </div>
+            <h2 class="text-lg font-bold text-white mb-1">${esc(p.frontmatter.title || "")}</h2>
+            <p class="text-sm text-gray-400">${esc(p.frontmatter.description || "")}</p>
+          </a>
+        `).join("")}
+      </div>
+    </div>
+  `;
+  return shell(body, "blog");
+}
+
 function render404() {
   return shell(`<div class="max-w-2xl mx-auto px-4 py-24 text-center"><h1 class="text-6xl font-bold mb-4" style="background:linear-gradient(135deg,#7C3AED,#10B981);-webkit-background-clip:text;-webkit-text-fill-color:transparent">404</h1><p class="text-gray-400 mb-8">Page not found</p><a href="/" class="px-6 py-2.5 rounded-xl text-sm font-semibold text-white no-underline" style="background:linear-gradient(135deg,#7C3AED,#10B981)">Go Home</a></div>`);
 }
 
-module.exports = { landing, doc, render404 };
+module.exports = { landing, doc, blogPage, render404 };

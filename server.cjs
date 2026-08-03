@@ -79,6 +79,15 @@ app.get("/", (req, res) => {
   res.send(html);
 });
 
+app.get("/blog", (req, res) => {
+  const posts = allDocs().filter((d) => d.slug.startsWith("blog/")).sort((a, b) => {
+    const dateA = a.frontmatter.date || "";
+    const dateB = b.frontmatter.date || "";
+    return dateB.localeCompare(dateA);
+  });
+  res.send(views.blogPage(posts));
+});
+
 app.get("/:slug(*)", (req, res) => {
   const slug = req.params.slug.replace(/\.html$/, "");
   const html = renderHtml(slug);
