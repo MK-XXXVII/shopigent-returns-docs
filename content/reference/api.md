@@ -8,7 +8,7 @@ description: Complete documentation for all 7 MCP tools available via the Shopig
 The MCP server follows the [Model Context Protocol](https://modelcontextprotocol.io) specification (2024-11-05). It's available at:
 
 ```
-POST https://returns-app-production-8384.up.railway.app/api/mcp
+POST https://returns.greeknous.com/api/mcp
 Authorization: Bearer YOUR_MCP_KEY
 Content-Type: application/json
 ```

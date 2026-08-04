@@ -43,7 +43,7 @@ get_policy_recommendation — Best policy match for a return
 list_returns       — List returns by status
 ```
 
-**Endpoint:** `https://returns-app-production-8384.up.railway.app/api/mcp`
+**Endpoint:** `https://returns.greeknous.com/api/mcp`
 
 ## Pricing
 
@@ -62,5 +62,5 @@ list_returns       — List returns by status
 
 ---
 
-[Start a Return →](https://returns-app-production-8384.up.railway.app/return)
+[Start a Return →](https://returns.greeknous.com/return)
 [View Docs →](/guides/getting-started)

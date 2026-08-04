@@ -171,7 +171,7 @@ For fully automated processing, you can set up a daily cron job:
 
 ```bash
 # Run every morning at 8 AM
-0 8 * * * curl -X POST https://returns-app-production-8384.up.railway.app/api/mcp \
+0 8 * * * curl -X POST https://returns.greeknous.com/api/mcp \
   -H "Authorization: Bearer YOUR_MCP_KEY" \
   -H "Content-Type: application/json" \
   -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"list_returns","arguments":{"status":"PENDING"}}}'

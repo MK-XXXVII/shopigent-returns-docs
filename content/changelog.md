@@ -18,7 +18,7 @@ description: Release history and updates for Shopigent Returns.
 - **Email Notifications** — Automatic emails on approve/deny/refund via VPS mail relay
 - **Analytics Dashboard** — Return rate, auto-resolution %, trends, top reasons
 - **ORDERS_FULFILLED Webhook** — Auto-create returns when orders are fulfilled
-- **Documentation Site** — Complete docs at returns-docs-production.up.railway.app
+- **Documentation Site** — Complete docs at returns-docs.greeknous.com
 
 ### 🔧 Technical
 

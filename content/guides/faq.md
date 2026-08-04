@@ -53,7 +53,7 @@ MCP (Model Context Protocol) is an open standard for connecting AI agents to too
 
 ### Which AI agents are supported?
 
-Any MCP-compatible client: **Claude Desktop**, **GitHub Codex**, **Cursor**, **Grok**, and more.
+Any MCP-compatible client: **Claude Desktop**, **OpenAI Codex**, **Cursor**, **Grok**, and more.
 
 ### Can the agent refund orders?
 

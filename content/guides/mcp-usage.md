@@ -27,7 +27,7 @@ Edit `claude_desktop_config.json`:
   "mcpServers": {
     "shopigent-returns": {
       "type": "url",
-      "url": "https://returns-app-production-8384.up.railway.app/api/mcp",
+      "url": "https://returns.greeknous.com/api/mcp",
       "headers": {
         "Authorization": "Bearer YOUR_MCP_KEY"
       }
@@ -36,10 +36,10 @@ Edit `claude_desktop_config.json`:
 }
 ```
 
-#### GitHub Codex
+#### OpenAI Codex
 
 ```bash
-codex --mcp-url https://returns-app-production-8384.up.railway.app/api/mcp \
+codex --mcp-url https://returns.greeknous.com/api/mcp \
   --mcp-headers '{"Authorization":"Bearer YOUR_MCP_KEY"}'
 ```
 
@@ -50,7 +50,7 @@ Add in Cursor settings → MCP Servers:
 ```json
 {
   "shopigent-returns": {
-    "url": "https://returns-app-production-8384.up.railway.app/api/mcp",
+    "url": "https://returns.greeknous.com/api/mcp",
     "headers": { "Authorization": "Bearer YOUR_MCP_KEY" }
   }
 }

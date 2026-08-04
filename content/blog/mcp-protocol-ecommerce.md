@@ -41,7 +41,7 @@ Because MCP is a standard, any MCP-compatible agent can manage your returns:
 | Agent | Connection Method | Use Case |
 |---|---|---|
 | Claude Desktop | MCP URL config | Daily management |
-| GitHub Codex | --mcp-url flag | Code + store management |
+| OpenAI Codex | --mcp-url flag | Code + store management |
 | Cursor | MCP settings | Development + operations |
 | Grok | MCP integration | Research + analysis |
 

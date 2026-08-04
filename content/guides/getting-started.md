@@ -36,7 +36,7 @@ In Claude Desktop, add to `claude_desktop_config.json`:
   "mcpServers": {
     "shopigent-returns": {
       "type": "url",
-      "url": "https://returns-app-production-8384.up.railway.app/api/mcp",
+      "url": "https://returns.greeknous.com/api/mcp",
       "headers": {
         "Authorization": "Bearer YOUR_MCP_KEY"
       }
@@ -45,12 +45,12 @@ In Claude Desktop, add to `claude_desktop_config.json`:
 }
 ```
 
-### Connect GitHub Codex
+### Connect OpenAI Codex
 
 Pass the MCP key and endpoint when configuring Codex:
 
 ```
---mcp-url https://returns-app-production-8384.up.railway.app/api/mcp
+--mcp-url https://returns.greeknous.com/api/mcp
 --mcp-headers '{"Authorization":"Bearer YOUR_MCP_KEY"}'
 ```
 
@@ -59,7 +59,7 @@ Pass the MCP key and endpoint when configuring Codex:
 Share the return portal with your customers:
 
 ```
-https://returns-app-production-8384.up.railway.app/return
+https://returns.greeknous.com/return
 ```
 
 Customers enter their email, select their order, choose items to return, and submit. The AI agent handles the rest.
