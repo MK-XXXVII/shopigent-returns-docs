@@ -3,6 +3,20 @@ title: Changelog
 description: Release history and updates for Shopigent Returns.
 ---
 
+## v1.1.0 — OTP Security & Portal Setup (August 2026)
+
+### ✨ Features
+
+- **OTP Email Verification** — Customer portal now requires a 6-digit one-time code sent to the customer's email before showing orders. Prevents unauthorized access.
+- **Portal Setup in Settings** — Each store gets its unique portal URL in **Settings → Return Portal** with one-click copy and setup instructions.
+- **Portal Setup Guide** — New docs page at `/guides/return-portal` with step-by-step instructions for merchants.
+
+### 🔧 Technical
+
+- New `OtpCode` database model for secure OTP storage (10-minute expiry)
+- VPS mail relay integration for OTP delivery
+- Migration: `0004_add_otp_codes`
+
 ## v1.0.0 — Initial Release (August 2026)
 
 ### ✨ Features

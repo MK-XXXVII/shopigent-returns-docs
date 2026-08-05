@@ -11,7 +11,7 @@ Here's what we're working on and what's coming next for Shopigent Returns. This 
 
 - **AI Agent v1** — MCP-powered agent analyzes, approves, denies, and refunds returns automatically
 - **Policy Engine** — Configurable rules with time windows, amount limits, restocking fees, and auto-approve
-- **Customer Portal** — Self-service return initiation at `/return`
+- **Customer Portal** — Self-service return initiation at `returns.greeknous.com/return` with OTP email verification
 - **Fraud Detection** — IP checks, velocity analysis, amount anomalies
 - **Auto-Refund** — Direct Shopify refund execution via Admin API
 - **Label Generation** — SendCloud, Shippo, and EasyPost integration

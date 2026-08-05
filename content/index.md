@@ -1,6 +1,6 @@
 ---
 title: Shopigent Returns — AI-Powered Return Management
-description: Automate your Shopify returns with AI agents. Policy engine, fraud detection, auto-refunds, and MCP server.
+description: Automate your Shopify returns with AI agents. Policy engine, fraud detection, auto-refunds, MCP server, and self-service customer portal.
 ---
 
 **Stop manually processing returns.** Shopigent Returns uses AI agents to analyze, approve, refund, and detect fraud — automatically.
@@ -22,12 +22,21 @@ Unlike traditional returns apps that are just workflow tools, Shopigent Returns 
 |---|---|
 | **Policy Engine** | Set rules: max days, max amount, auto-approve thresholds, restocking fees |
 | **AI Agent (MCP)** | Connect via Claude Desktop, Codex, Cursor — manage returns in natural language |
-| **Customer Portal** | Self-service return initiation. Customer enters email, selects items, submits |
+| **Customer Portal** | Self-service return initiation with **OTP email verification** for security |
 | **Fraud Detection** | IP checks, return velocity, amount anomalies, frequent returner flags |
 | **Auto-Refund** | Execute Shopify Admin API refunds. Full or partial, with restocking |
 | **Label Generation** | SendCloud (EU/NL), Shippo (US), or EasyPost (global) |
 | **Email Notifications** | Automatic emails on approve, deny, and refund |
 | **Analytics** | Return rate, auto-resolution %, fraud saved, top reasons, trends |
+
+## Customer Portal
+
+Give your customers a self-service return page at `returns.greeknous.com/return?shop=YOUR_STORE.myshopify.com`.
+
+- Customers enter their email and receive a **one-time verification code** (OTP)
+- After verification, their orders appear — they select items and a reason
+- The AI agent reviews and processes the return automatically
+- [Full setup guide →](/guides/return-portal)
 
 ## MCP Server
 
@@ -62,5 +71,5 @@ list_returns       — List returns by status
 
 ---
 
-[Start a Return →](https://returns.greeknous.com/return)
+[Install App →](https://apps.shopify.com)
 [View Docs →](/guides/getting-started)

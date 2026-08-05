@@ -89,10 +89,14 @@ Yes, at any time. Changes take effect immediately.
 
 ### Why isn't the customer portal working?
 
-The portal at `/return` is a public page — no login required. Customers enter their email to find their orders. If orders aren't showing, make sure:
-- The store has unfulfilled orders
-- The customer email matches an order email
-- The app is installed and has an active session
+The portal at `returns.greeknous.com/return?shop=YOUR_STORE.myshopify.com` requires customers to verify their email with a one-time code (OTP) before seeing orders. If it's not working:
+
+- Make sure you're using your store's unique URL from **Settings → Return Portal**
+- The store must have a valid Shopify session (the app must be installed)
+- The customer's email must match an email in your Shopify store
+- Check that the mail relay is active (emails must reach the customer for the OTP)
+
+[Full setup guide →](/guides/return-portal)
 
 ### Why are refunds not executing?
 

@@ -31,10 +31,13 @@ Set the rules once and let the AI enforce them consistently. Configure condition
 
 A self-service return flow your customers will actually use. No email back-and-forth, no support tickets.
 
-- Customers enter their email to find their orders
+- Customers enter their email and verify with a **one-time code (OTP)** — secure by default
 - Select items and reasons from a clean interface
 - Submit instantly — the AI takes it from there
 - Fully embeddable / linked from your storefront
+- Each store gets its own portal URL: `returns.greeknous.com/return?shop=YOUR_STORE.myshopify.com`
+
+[Full portal setup guide →](/guides/return-portal)
 
 ### 🛡️ Fraud Detection
 

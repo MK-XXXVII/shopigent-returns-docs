@@ -56,13 +56,22 @@ Pass the MCP key and endpoint when configuring Codex:
 
 ## Step 3: Customer Portal
 
-Share the return portal with your customers:
+Give your customers a self-service return page. You can find your unique portal URL in **Settings → Return Portal**:
 
 ```
-https://returns.greeknous.com/return
+https://returns.greeknous.com/return?shop=YOUR_STORE.myshopify.com
 ```
 
-Customers enter their email, select their order, choose items to return, and submit. The AI agent handles the rest.
+Add this link to your store's **Online Store → Navigation** so customers can find it. [Full setup guide →](/guides/return-portal)
+
+**How it works for customers:**
+1. They enter their email
+2. A **6-digit verification code** (OTP) is sent to their inbox
+3. They enter the code to verify their identity
+4. Their orders appear — they select items and a reason
+5. The AI agent reviews and processes the return automatically
+
+Customers must prove they own the email address before seeing any order details.
 
 ## Step 4: Configure Email
 

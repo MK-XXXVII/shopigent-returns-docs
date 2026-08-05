@@ -26,8 +26,8 @@ function nav(currentSlug) {
   <nav class="sticky top-0 z-50" style="background:var(--nav);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)">
     <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
       <a href="/" class="flex items-center gap-3 no-underline">
-        <img src="/logo-bold-dark.svg" alt="Shopigent Returns" class="logo-dark-mode w-12 h-12 rounded-lg logo-spin">
-        <img src="/logo-bold-light.svg" alt="Shopigent Returns" class="logo-light-mode hidden w-12 h-12 rounded-lg logo-spin">
+        <img src="/logo-new-dark.svg" alt="Shopigent Returns" class="logo-dark-mode w-12 h-12 rounded-lg logo-spin">
+        <img src="/logo-new-light.svg" alt="Shopigent Returns" class="logo-light-mode hidden w-12 h-12 rounded-lg logo-spin">
         <span class="font-bold text-lg" style="color:var(--text-strong)">Shopigent Returns</span>
       </a>
       <div class="hidden md:flex items-center gap-4">
@@ -38,7 +38,7 @@ function nav(currentSlug) {
             <svg class="theme-moon hidden h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
           </span>
         </button>
-        <a href="https://returns.greeknous.com/return" class="px-4 py-2 rounded-lg text-sm font-semibold text-white no-underline" style="background:linear-gradient(135deg,#7C3AED,#10B981)">Start a Return</a>
+        <a href="https://apps.shopify.com" class="px-4 py-2 rounded-lg text-sm font-semibold text-white no-underline" style="background:linear-gradient(135deg,#7C3AED,#10B981)" target="_blank">Install App</a>
       </div>
       <button id="mobile-menu-btn" class="md:hidden rounded-md p-2 text-gray-500 dark:text-gray-400 hover:bg-black/5 dark:hover:bg-white/10" aria-label="Menu">
         <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -57,7 +57,7 @@ function nav(currentSlug) {
             <span class="mode-text-dark" style="color:var(--text)">Dark</span>
           </button>
         </div>
-        <a href="https://returns.greeknous.com/return" class="mt-2 rounded-lg px-4 py-2 text-center text-sm font-semibold text-white no-underline" style="background:linear-gradient(135deg,#7C3AED,#10B981)">Start a Return</a>
+        <a href="https://apps.shopify.com" class="mt-2 rounded-lg px-4 py-2 text-center text-sm font-semibold text-white no-underline" style="background:linear-gradient(135deg,#7C3AED,#10B981)" target="_blank">Install App</a>
       </div>
     </div>
   </nav>`;
@@ -78,7 +78,9 @@ function footer() {
         </div>
         <div>
           <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Company</h4>
-          <div class="flex flex-col gap-2">${["About", "Blog", "Contact", "Privacy", "Terms"].map((l) => `<a href="/${l.toLowerCase()}" class="text-sm text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white no-underline">${l}</a>`).join("")}</div>
+          <div class="flex flex-col gap-2">${["About", "Blog", "Contact"].map((l) => `<a href="/${l.toLowerCase()}" class="text-sm text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white no-underline">${l}</a>`).join("")}
+            <a href="/privacy-policy" class="text-sm text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white no-underline">Privacy</a>
+            <a href="/terms-of-service" class="text-sm text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white no-underline">Terms</a></div>
         </div>
         <div>
           <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Agent API</h4>
@@ -222,7 +224,7 @@ function landing(doc, all) {
         refund, and detect fraud — automatically. Saves merchants 10+ hours per week.
       </p>
       <div class="flex items-center justify-center gap-4 flex-wrap">
-        <a href="https://returns.greeknous.com/return" class="px-8 py-3 rounded-xl text-base font-semibold text-white no-underline inline-block" style="background:linear-gradient(135deg,#7C3AED,#10B981)">Start a Return →</a>
+        <a href="https://apps.shopify.com" class="px-8 py-3 rounded-xl text-base font-semibold text-white no-underline inline-block" style="background:linear-gradient(135deg,#7C3AED,#10B981)" target="_blank">Install App →</a>
         <a href="/guides/getting-started" class="px-8 py-3 rounded-xl text-base font-semibold no-underline inline-block" style="border:1px solid var(--border);color:var(--text-strong)">View Docs</a>
       </div>
     </section>
