@@ -1,47 +1,65 @@
 ---
 title: Getting Started with Shopigent Returns
-description: Install the app, configure billing, generate your MCP key, and connect AI agents.
+description: Install the app, configure your first policy, set up billing, and connect AI agents via MCP.
 ---
 
-## Installation
+## Quick Start
 
-1. Install the app from the **Shopify App Store**
-2. Authorize the required scopes (products, orders, customers, inventory, fulfillments, content, translations)
-3. You'll be redirected to the Dashboard
+1. Install Shopigent Returns from the Shopify App Store
+2. Create your first return policy
+3. Connect an AI agent via MCP
+4. Let it handle returns automatically
 
-## Step 1: Set Up Billing & Choose a Plan
+## 1. Installation
 
-Go to **Settings → Billing** to view available plans:
+Install the app from the Shopify App Store. After installation, you'll be redirected to the app dashboard.
 
-| Plan | Price | Tool Calls/Day | Features |
-|------|-------|----------------|----------|
-| **Free** | $0 | 25 | Read-only tools, audit log, dry-run preview |
-| **Growth** | $9.99/mo | 500 | All tools including writes (edit products, orders, customers), confirmation gate, 7-day trial |
-| **Pro** | $29/mo | Unlimited | Everything + translations, theme/Liquid editing, custom tools builder, priority execution, 7-day trial |
+## 2. Choose Your Plan
 
-Click **Choose plan** next to your desired tier. You'll be redirected to Shopify's hosted pricing page to confirm. Paid plans include a 7-day free trial. Changes take effect immediately.
+The app offers three plans:
 
-## Step 2: Generate an MCP Key
+| Plan | Price | Best For |
+|---|---|---|
+| **Free** | $0 | Testing with up to 10 returns/month |
+| **Growth** | $9.99/mo | Automated returns with fraud detection |
+| **Pro** | $29/mo | Full automation with labels and exchanges |
 
-Go to **Settings → MCP Server** and click **Generate MCP Key**.
+You can upgrade, downgrade, or cancel anytime from the **Billing** page.
 
-> ⚠️ **Save the key immediately** — it is only shown once. If lost, generate a new one from the same page.
+## 3. Create a Policy
 
-Each store gets one active MCP API key at a time.
+1. Go to **Policies** in the app navigation
+2. Click **Add Policy**
+3. Set conditions (max days, max amount, auto-approve)
+4. Enable the policy
 
-## Step 3: Connect Your AI Agent
+Policies define which returns are auto-approved by the AI agent. Example:
 
-Add the MCP server to your AI client's configuration:
+```
+Policy: Standard 30-Day Return
+- Max days: 30
+- Max amount: $200
+- Auto-approve: ✅
+- Restocking fee: 0%
+```
+
+## 4. Customer Return Portal
+
+Your customers can submit returns at:
+**https://returns.greeknous.com/return**
+
+They enter their email, receive an OTP, select items to return, and submit.
+
+## 5. Connect AI Agents via MCP
+
+Generate an MCP API key from **Settings** → **MCP Server**. Then configure your AI agent:
 
 ### Claude Desktop
-
-Add to `claude_desktop_config.json`:
 
 ```json
 {
   "mcpServers": {
     "shopigent-returns": {
-      "type": "url",
       "url": "https://returns.greeknous.com/api/mcp",
       "headers": {
         "Authorization": "Bearer YOUR_MCP_KEY"
@@ -51,102 +69,33 @@ Add to `claude_desktop_config.json`:
 }
 ```
 
-### OpenAI Codex / Codex Desktop
-
-```bash
-codex --mcp-url https://returns.greeknous.com/api/mcp \
-  --mcp-headers '{"Authorization":"Bearer YOUR_MCP_KEY"}'
-```
-
-### Cursor
-
-Add in **Cursor Settings → MCP Servers**:
-
-```json
-{
-  "shopigent-returns": {
-    "url": "https://returns.greeknous.com/api/mcp",
-    "headers": { "Authorization": "Bearer YOUR_MCP_KEY" }
-  }
-}
-```
-
-## Step 4: Confirmation Gate (Security)
-
-All mutation tools that are marked as destructive or require a second check use the **confirmation gate**. The agent must:
-
-1. Call the tool without `confirmed` — the server returns `status: "confirmation_pending"` with an HMAC-signed `confirmationToken`
-2. Present the details to you (the human) for approval
-3. Call the same tool again with `confirmed: true` and the `confirmationToken`
+### Codex Desktop
 
 ```
-Agent calls: update_product({ id: "gid://shopify/Product/123", title: "New Title" })
-Server responds: {
-  status: "confirmation_pending",
-  content: {
-    message: "This action requires confirmation before it runs.",
-    graphqlPreview: "...",
-    variablesPreview: { ... },
-    confirmationToken: "hmac..."
-  }
-}
-
-You approve
-
-Agent calls: update_product({
-  id: "gid://shopify/Product/123",
-  title: "New Title",
-  confirmed: true,
-  confirmationToken: "hmac..."
-})
-→ Status: "success" ✅
+Type: Streamable HTTP
+URL: https://returns.greeknous.com/api/mcp
+Headers: Authorization: Bearer YOUR_MCP_KEY
 ```
 
-The token expires in **5 minutes** and is bound to the exact shop, tool, and arguments to prevent replay attacks.
+## 6. Confirmation Gate (Security)
 
-## Step 5: Dry-Run Mode
+Destructive operations (approve/deny returns) require a two-step confirmation:
 
-Before executing any tool, you can preview the GraphQL call without side effects:
+1. First call `issue_confirmation_token` to get a signed HMAC token
+2. Include the token as `confirmationToken` in the actual `approve_return` or `deny_return` call
 
-```
-Call any tool with: dryRun: true
-Server responds: {
-  status: "dry_run",
-  content: {
-    graphqlPreview: "mutation ... { ... }",
-    variablesPreview: { ... }
-  }
-}
-```
+Tokens expire after 5 minutes and are bound to specific arguments.
 
-This shows exactly what Shopify API call will be made, including the resolved arguments. Great for auditing before approval.
+## 7. Plan-Based Access
 
-## Step 6: Custom Tools (Pro Plan)
+| Plan | Tools Available |
+|---|---|
+| **Free** | Read-only: analyze, check fraud, list tools |
+| **Growth** | Approve, deny, refund, email notifications, analytics |
+| **Pro** | Exchange workflow, label generation, SMS alerts, advanced fraud rules |
 
-Pro plan users can define their own tools via the **Custom Tools** page:
+## 8. Next Steps
 
-1. Go to **Settings → Custom Tools**
-2. Write a GraphQL query or mutation
-3. Define the input schema
-4. Dry-run to validate
-5. Activate — the tool is instantly available via MCP
-
-## Available Tools
-
-Shopigent comes with **72 curated tools** covering:
-
-- **Products** — list, search, create, update, delete, metafields, variants, images, bulk price updates
-- **Orders** — list, search, get, update, refund
-- **Customers** — list, search, get, create, update
-- **Collections** — list, get, create, update, delete, product membership
-- **Discounts** — list, get, create, delete
-- **Fulfillments** — list orders, get orders, close/open fulfillment orders
-- **Content** — pages, blogs, articles (CRUD)
-- **Themes** — list, get files, duplicate, publish, edit content/Liquid, manage translations
-- **Store Info** — get shop details
-
-## Next Steps
-
-- Read the [MCP Usage Guide](/guides/mcp-usage) for detailed workflows
-- See [Pricing](/pricing) for plan comparison
-- View [Changelog](/changelog) for updates
+- [MCP Usage Guide →](/guides/mcp-usage)
+- [Policy Configuration →](/guides/policies)
+- [Workflow Examples →](/guides/workflows)
