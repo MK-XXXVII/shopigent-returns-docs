@@ -68,9 +68,36 @@ When a customer submits a return:
 4. If auto-approve is enabled and conditions are met → **auto-approved**
 5. If no policy matches → flagged for **manual review**
 
+## Partial Returns
+
+Customers can return **specific items** from an order instead of everything. When the agent approves a partial return:
+
+- Use `returnedItems: ["item-id-1", "item-id-2"]` in `approve_return`
+- Only the selected items are refunded/credited
+- The rest stay on the original order
+
+**Example:** Customer ordered 5 items but wants to return 2. The agent approves with `returnedItems` set to those 2 items. The refund only covers those 2 items.
+
+## Store Credit
+
+Instead of a refund, you can offer **store credit** — a credit that customers can use for future purchases. This increases repeat purchases and reduces payment processor fees.
+
+To issue store credit:
+
+- Set `storeCredit: true` in `approve_return`
+- The AI agent creates a store credit note in Shopify
+- The customer can use it on their next order
+
+**When to use store credit:**
+- Exchanges (customer returns item A, gets credit for item B)
+- Customers who prefer credit over refund
+- Promotional returns (bonus credit for store loyalty)
+
 ## Tips
 
 - **Lower priority number = checked first.** Set your most common policy to priority 0.
 - **Auto-approve is powerful.** Use it for low-risk returns (low value, recent orders).
 - **Combine policies.** A standard auto-approve + a high-value review policy covers most scenarios.
 - **Test with the MCP agent.** Call `analyze_return` to see which policy matches a given return.
+- **Partial returns** reduce shipping costs and improve customer satisfaction.
+- **Store credit** improves cash flow and customer retention.

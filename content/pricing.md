@@ -12,12 +12,16 @@ description: Affordable plans for businesses of all sizes. Free tier available.
 | **Policy Engine** | ✅ Basic | ✅ Full | ✅ Full | ✅ Full |
 | **Auto-approve** | ❌ | ✅ | ✅ | ✅ |
 | **Fraud Detection** | ❌ | ✅ Basic | ✅ Advanced | ✅ Custom |
+| **Partial Returns** | ❌ | ✅ | ✅ | ✅ |
+| **Store Credit** | ❌ | ✅ | ✅ | ✅ |
+| **Confirmation Gate** | ❌ | ✅ | ✅ | ✅ |
+| **Exchange Workflow** | ❌ | ❌ | ✅ | ✅ |
 | **MCP Server** | Read-only | ✅ Full | ✅ Full | ✅ Full |
 | **Refund Execution** | ❌ | ✅ | ✅ | ✅ |
 | **Label Generation** | ❌ | ❌ | ✅ | ✅ |
-| **Exchanges** | ❌ | ❌ | ✅ | ✅ |
+| **SMS Notifications** | ❌ | ❌ | ✅ | ✅ |
+| **Advanced Fraud Rules** | ❌ | ❌ | ✅ | ✅ |
 | **Email Notifications** | ❌ | ✅ | ✅ | ✅ |
-| **SMS Alerts** | ❌ | ❌ | ✅ | ✅ |
 | **Analytics** | ❌ | ✅ Basic | ✅ Full | ✅ Full |
 | **Multi-store** | ❌ | ❌ | ❌ | ✅ |
 | **White-label** | ❌ | ❌ | ❌ | ✅ |
@@ -29,10 +33,10 @@ description: Affordable plans for businesses of all sizes. Free tier available.
 Ideal for small stores testing AI-powered returns. Includes basic policy configuration and read-only MCP access.
 
 ### Growth
-For growing stores that want to automate returns. The AI agent auto-approves returns, checks fraud, and executes refunds.
+For growing stores that want to automate returns. The AI agent auto-approves returns, checks fraud, executes refunds, partial returns, and store credit. Includes confirmation gate security.
 
 ### Pro
-For high-volume stores. Includes label generation (SendCloud/Shippo/EasyPost), exchange workflow, SMS alerts, and full analytics.
+For high-volume stores. Includes label generation (SendCloud/Shippo/EasyPost), exchange workflow, SMS alerts, full analytics, and advanced fraud rules.
 
 ### Enterprise
 For multi-store operations. White-label options, custom integrations, dedicated support, and SLA guarantees.

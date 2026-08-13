@@ -51,7 +51,7 @@ Set up cron jobs that call the MCP endpoint to process returns on a schedule —
 
 ## Shopigent Returns MCP Tools
 
-Our MCP server exposes 7 tools that any AI agent can use:
+Our MCP server exposes 9 tools that any AI agent can use:
 
 | Tool | What It Does |
 |---|---|

@@ -165,6 +165,73 @@ For returns that don't match any policy:
 
 ---
 
+## Workflow 6: Partial Return Flow
+
+**Goal:** Customer wants to return only 2 of 5 items from an order.
+
+### Chat Example
+
+> **Merchant:** "Customer Maria wants to return only the blue sweater and the beanie from order #BZ-2026030. Issue store credit instead of refund."
+
+> **Agent:** "Let me check the order and process the partial return."
+> 1. `analyze_return(returnId: "xxx")` → return is eligible
+> 2. `issue_confirmation_token(action: "approve", returnId: "xxx", args: { returnedItems: ["sw-item-id", "beanie-item-id"], storeCredit: true })` → get token
+> 3. `approve_return(returnId: "xxx", returnedItems: ["sw-item-id", "beanie-item-id"], storeCredit: true, confirmationToken: "...")` → approve
+>
+> "Done! ✅ Partial return approved for 2 items ($67.50 total). Store credit issued. Customer notified."
+
+---
+
+## Workflow 7: Store Credit Flow
+
+**Goal:** Issue store credit instead of a refund to encourage repeat purchases.
+
+### Chat Example
+
+> **Merchant:** "Approve return #BZ-2026035 but issue store credit — the customer prefers credit."
+
+> **Agent:** "Processing store credit..."
+> 1. `issue_confirmation_token(action: "approve", returnId: "xxx", args: { storeCredit: true })`
+> 2. `approve_return(returnId: "xxx", storeCredit: true, confirmationToken: "...")`
+>
+> "✅ Return approved. $89.00 in store credit issued to customer. No refund processed."
+
+---
+
+## Workflow 8: Exchange Flow
+
+**Goal:** Exchange a product for a different variant (e.g., size or color).
+
+### Chat Example
+
+> **Merchant:** "Customer wants to exchange the blue hoodie (size M) for a red one (size L). Create the exchange."
+
+> **Agent:** "Let me find the variant and process the exchange."
+> 1. `analyze_return(returnId: "xxx")` → return is eligible
+> 2. `exchange_return(returnId: "xxx", replacementVariantId: "gid://shopify/ProductVariant/987654", replacementQuantity: 1, notes: "Size exchange: M → L, color: Blue → Red")`
+>
+> "✅ Exchange created! Draft order #D-20260805 for the replacement. The customer will receive instructions for returning the original item."
+
+---
+
+## Workflow 9: Confirmation Gate Flow
+
+**Goal:** Demonstrate the confirmation gate security pattern.
+
+### Chat Example
+
+> **Agent:** "I found a pending return (#BZ-2026040) that matches the standard policy. I need to approve it, but first I need a confirmation token."
+>
+> **Agent actions:**
+> 1. `issue_confirmation_token(action: "approve", returnId: "xxx", args: { refundAmount: 45.00, issueLabel: true })`
+>    → Token received ✓
+> 2. `approve_return(returnId: "xxx", refundAmount: 45.00, issueLabel: true, confirmationToken: "hmac...")`
+>    → Return approved ✓
+>
+> "✅ Return #BZ-2026040 approved. $45.00 refunded, return label generated, customer notified."
+
+---
+
 ## Automation Setup (Scheduled Tasks)
 
 For fully automated processing, you can set up a daily cron job:

@@ -1,35 +1,41 @@
 ---
 title: Getting Started with Shopigent Returns
-description: Install the app, configure your first policy, and connect AI agents.
+description: Install the app, configure billing, generate your MCP key, and connect AI agents.
 ---
 
 ## Installation
 
-1. Install the app from the Shopify App Store
-2. Authorize the required scopes (orders, products, customers, fulfillments, inventory)
+1. Install the app from the **Shopify App Store**
+2. Authorize the required scopes (products, orders, customers, inventory, fulfillments, content, translations)
 3. You'll be redirected to the Dashboard
 
-## Step 1: Set Up Policies
+## Step 1: Set Up Billing & Choose a Plan
 
-Policies define how returns are handled. Go to **Policies** and create your first one:
+Go to **Settings → Billing** to view available plans:
 
-```
-Name: Standard 30-day return
-Max Days: 30
-Max Amount: $200
-Auto-approve: ✅
-Restocking Fee: 0%
-```
+| Plan | Price | Tool Calls/Day | Features |
+|------|-------|----------------|----------|
+| **Free** | $0 | 25 | Read-only tools, audit log, dry-run preview |
+| **Growth** | $9.99/mo | 500 | All tools including writes (edit products, orders, customers), confirmation gate, 7-day trial |
+| **Pro** | $29/mo | Unlimited | Everything + translations, theme/Liquid editing, custom tools builder, priority execution, 7-day trial |
 
-Orders under $200 within 30 days will be auto-approved by the AI agent.
+Click **Choose plan** next to your desired tier. You'll be redirected to Shopify's hosted pricing page to confirm. Paid plans include a 7-day free trial. Changes take effect immediately.
 
-## Step 2: Configure MCP
+## Step 2: Generate an MCP Key
 
-Go to **Settings → Generate MCP Key** to get your API key for AI agents.
+Go to **Settings → MCP Server** and click **Generate MCP Key**.
 
-### Connect Claude Desktop
+> ⚠️ **Save the key immediately** — it is only shown once. If lost, generate a new one from the same page.
 
-In Claude Desktop, add to `claude_desktop_config.json`:
+Each store gets one active MCP API key at a time.
+
+## Step 3: Connect Your AI Agent
+
+Add the MCP server to your AI client's configuration:
+
+### Claude Desktop
+
+Add to `claude_desktop_config.json`:
 
 ```json
 {
@@ -45,48 +51,102 @@ In Claude Desktop, add to `claude_desktop_config.json`:
 }
 ```
 
-### Connect OpenAI Codex
+### OpenAI Codex / Codex Desktop
 
-Pass the MCP key and endpoint when configuring Codex:
-
-```
---mcp-url https://returns.greeknous.com/api/mcp
---mcp-headers '{"Authorization":"Bearer YOUR_MCP_KEY"}'
+```bash
+codex --mcp-url https://returns.greeknous.com/api/mcp \
+  --mcp-headers '{"Authorization":"Bearer YOUR_MCP_KEY"}'
 ```
 
-## Step 3: Customer Portal
+### Cursor
 
-Give your customers a self-service return page. You can find your unique portal URL in **Settings → Return Portal**:
+Add in **Cursor Settings → MCP Servers**:
+
+```json
+{
+  "shopigent-returns": {
+    "url": "https://returns.greeknous.com/api/mcp",
+    "headers": { "Authorization": "Bearer YOUR_MCP_KEY" }
+  }
+}
+```
+
+## Step 4: Confirmation Gate (Security)
+
+All mutation tools that are marked as destructive or require a second check use the **confirmation gate**. The agent must:
+
+1. Call the tool without `confirmed` — the server returns `status: "confirmation_pending"` with an HMAC-signed `confirmationToken`
+2. Present the details to you (the human) for approval
+3. Call the same tool again with `confirmed: true` and the `confirmationToken`
 
 ```
-https://returns.greeknous.com/return?shop=YOUR_STORE.myshopify.com
+Agent calls: update_product({ id: "gid://shopify/Product/123", title: "New Title" })
+Server responds: {
+  status: "confirmation_pending",
+  content: {
+    message: "This action requires confirmation before it runs.",
+    graphqlPreview: "...",
+    variablesPreview: { ... },
+    confirmationToken: "hmac..."
+  }
+}
+
+You approve
+
+Agent calls: update_product({
+  id: "gid://shopify/Product/123",
+  title: "New Title",
+  confirmed: true,
+  confirmationToken: "hmac..."
+})
+→ Status: "success" ✅
 ```
 
-Add this link to your store's **Online Store → Navigation** so customers can find it. [Full setup guide →](/guides/return-portal)
+The token expires in **5 minutes** and is bound to the exact shop, tool, and arguments to prevent replay attacks.
 
-**How it works for customers:**
-1. They enter their email
-2. A **6-digit verification code** (OTP) is sent to their inbox
-3. They enter the code to verify their identity
-4. Their orders appear — they select items and a reason
-5. The AI agent reviews and processes the return automatically
+## Step 5: Dry-Run Mode
 
-Customers must prove they own the email address before seeing any order details.
+Before executing any tool, you can preview the GraphQL call without side effects:
 
-## Step 4: Configure Email
+```
+Call any tool with: dryRun: true
+Server responds: {
+  status: "dry_run",
+  content: {
+    graphqlPreview: "mutation ... { ... }",
+    variablesPreview: { ... }
+  }
+}
+```
 
-Emails are sent automatically when returns are approved or denied. No setup needed — we use our VPS mail relay.
+This shows exactly what Shopify API call will be made, including the resolved arguments. Great for auditing before approval.
 
-## Step 5: Configure Labels (Optional)
+## Step 6: Custom Tools (Pro Plan)
 
-Set your label provider via Railway variables:
+Pro plan users can define their own tools via the **Custom Tools** page:
 
-- `LABEL_PROVIDER=sendcloud` + `SENDCLOUD_API_KEY` + `SENDCLOUD_API_SECRET`
-- or `LABEL_PROVIDER=shippo` + `SHIPPO_API_KEY`
-- or `LABEL_PROVIDER=easypost` + `EASYPOST_API_KEY`
+1. Go to **Settings → Custom Tools**
+2. Write a GraphQL query or mutation
+3. Define the input schema
+4. Dry-run to validate
+5. Activate — the tool is instantly available via MCP
+
+## Available Tools
+
+Shopigent comes with **72 curated tools** covering:
+
+- **Products** — list, search, create, update, delete, metafields, variants, images, bulk price updates
+- **Orders** — list, search, get, update, refund
+- **Customers** — list, search, get, create, update
+- **Collections** — list, get, create, update, delete, product membership
+- **Discounts** — list, get, create, delete
+- **Fulfillments** — list orders, get orders, close/open fulfillment orders
+- **Content** — pages, blogs, articles (CRUD)
+- **Themes** — list, get files, duplicate, publish, edit content/Liquid, manage translations
+- **Store Info** — get shop details
 
 ## Next Steps
 
-- Read the [API Reference](/reference/api) for MCP tool details
-- Check [Pricing](/pricing) for plans
+- Read the [MCP Usage Guide](/guides/mcp-usage) for detailed workflows
+- See [Pricing](/pricing) for plan comparison
 - View [Changelog](/changelog) for updates

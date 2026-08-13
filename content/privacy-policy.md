@@ -36,7 +36,7 @@ We use the collected data to:
 2. Execute refunds via the Shopify Admin API
 3. Detect and prevent return fraud
 4. Generate analytics and reports
-5. Send email notifications about return status
+5. Send email and SMS notifications about return status
 6. Improve the App's functionality
 
 ## Data Storage
