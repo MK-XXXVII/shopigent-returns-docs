@@ -152,6 +152,12 @@ function shell(body, slug = "") {
     .prose table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.9rem}
     .prose th,.prose td{padding:.6rem .8rem;text-align:left;border-bottom:1px solid var(--border)}
     .prose th{color:var(--text-strong);font-weight:600}
+    /* Responsive tables: scroll on mobile */
+    .prose table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap}
+    @media(max-width:640px){
+      .prose table{font-size:.8rem}
+      .prose th,.prose td{padding:.4rem .5rem}
+    }
     ::selection{background:rgba(124,58,237,.3)}
     html:not(.dark) .theme-sun{display:block!important}
     html:not(.dark) .theme-moon{display:none!important}
@@ -289,7 +295,7 @@ function doc(doc, all) {
           ${sidebar.map((d) => `<a href="/${d.slug}" class="text-sm no-underline py-1.5 px-2 rounded ${d.slug === doc.slug ? "text-[#7C3AED] font-medium" : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"}" ${d.slug === doc.slug ? `style="background:var(--hover)"` : ""}>${d.title}</a>`).join("")}
         </div>
       </aside>
-      <article class="prose flex-1 min-w-0">
+      <article class="prose flex-1 min-w-0 overflow-x-auto">
         <h1>${esc(doc.frontmatter.title || "")}</h1>
         ${doc.html}
       </article>

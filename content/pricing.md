@@ -5,41 +5,32 @@ description: Affordable plans for businesses of all sizes. Free tier available.
 
 ## Plans & Pricing
 
-| Feature | Free | Growth | Pro | Enterprise |
-|---|---|---|---|---|
-| **Price** | $0/month | $9.99/month | $29/month | Custom |
-| **Returns per month** | 10 | Unlimited | Unlimited | Unlimited |
-| **Policy Engine** | ✅ Basic | ✅ Full | ✅ Full | ✅ Full |
-| **Auto-approve** | ❌ | ✅ | ✅ | ✅ |
-| **Fraud Detection** | ❌ | ✅ Basic | ✅ Advanced | ✅ Custom |
-| **Partial Returns** | ❌ | ✅ | ✅ | ✅ |
-| **Store Credit** | ❌ | ✅ | ✅ | ✅ |
-| **Confirmation Gate** | ❌ | ✅ | ✅ | ✅ |
-| **Exchange Workflow** | ❌ | ❌ | ✅ | ✅ |
-| **MCP Server** | Read-only | ✅ Full | ✅ Full | ✅ Full |
-| **Refund Execution** | ❌ | ✅ | ✅ | ✅ |
-| **Label Generation** | ❌ | ❌ | ✅ | ✅ |
-| **SMS Notifications** | ❌ | ❌ | ✅ | ✅ |
-| **Advanced Fraud Rules** | ❌ | ❌ | ✅ | ✅ |
-| **Email Notifications** | ❌ | ✅ | ✅ | ✅ |
-| **Analytics** | ❌ | ✅ Basic | ✅ Full | ✅ Full |
-| **Multi-store** | ❌ | ❌ | ❌ | ✅ |
-| **White-label** | ❌ | ❌ | ❌ | ✅ |
-| **Support** | Community | Email | Priority | Dedicated |
+| Feature | Free | Growth | Pro |
+|---------|------|--------|-----|
+| **Price** | $0/month | $9.99/month | $29/month |
+| **Returns/mo** | 10 | Unlimited | Unlimited |
+| **Policy Engine** | ✅ Basic | ✅ Full | ✅ Full |
+| **Auto-approve** | ❌ | ✅ | ✅ |
+| **Fraud Detection** | ❌ | ✅ Basic | ✅ Advanced |
+| **Auto-Refund** | ❌ | ✅ | ✅ |
+| **Label Generation** | ❌ | ❌ | ✅ |
+| **Email Notifications** | ❌ | ✅ | ✅ |
+| **Analytics** | ❌ | ✅ Basic | ✅ Full |
+| **MCP Access** | Read-only | ✅ Full | ✅ Full |
 
-## Feature Details
+## Plan Details
 
 ### Free
-Ideal for small stores testing AI-powered returns. Includes basic policy configuration and read-only MCP access.
 
-### Growth
-For growing stores that want to automate returns. The AI agent auto-approves returns, checks fraud, executes refunds, partial returns, and store credit. Includes confirmation gate security.
+Ideal for small stores testing AI-powered returns. Includes basic policy configuration, 10 returns per month, and read-only MCP access. No credit card required.
 
-### Pro
-For high-volume stores. Includes label generation (SendCloud/Shippo/EasyPost), exchange workflow, SMS alerts, full analytics, and advanced fraud rules.
+### Growth — $9.99/month
 
-### Enterprise
-For multi-store operations. White-label options, custom integrations, dedicated support, and SLA guarantees.
+For growing stores that want to automate returns. The AI agent auto-approves returns, detects fraud, executes refunds, and sends email notifications. Full MCP access.
+
+### Pro — $29/month
+
+For high-volume stores. Everything in Growth, plus label generation with SendCloud/Shippo/EasyPost, advanced fraud rules, and full analytics. The complete returns automation solution.
 
 ## FAQ
 
