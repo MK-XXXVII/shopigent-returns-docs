@@ -37,9 +37,10 @@ The link will appear in your store's navigation for customers to click.
 3. A **6-digit verification code** is sent to that email (valid for 10 minutes)
 4. They enter the code to verify their identity
 5. Their orders are displayed — they select **specific items** to return (partial return supported)
-6. They choose between **refund** or **store credit**
-7. The return request is submitted to the **AI agent** for review
-8. The AI agent checks your policies, fraud signals, and decides automatically
+6. They choose a **reason** from the dropdown (Wrong size, Defective, Changed mind, etc.)
+7. They adjust **quantities** — the line total updates live as they change quantites
+8. The return request is submitted to the **AI agent** for review
+9. The AI agent checks your policies, fraud signals, and decides automatically
 
 ### Security
 

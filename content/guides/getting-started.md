@@ -86,7 +86,14 @@ Destructive operations (approve/deny returns) require a two-step confirmation:
 
 Tokens expire after 5 minutes and are bound to specific arguments.
 
-## 7. Plan-Based Access
+## 7\. Email Notifications
+
+Every email includes:
+- **Sender**: `shopigent@greeknous.com` — with your store name in the display
+- **Logo**: Branded Shopigent Returns logo at the top of every email
+- **Types**: Return received confirmation, approval (with refund amount), denial (with reason), refund processed, shipping label
+
+## 8\. Plan-Based Access
 
 | Plan | Tools Available |
 |---|---|

@@ -41,12 +41,14 @@ A self-service return flow your customers will actually use. No email back-and-f
 
 ### 🛡️ Fraud Detection
 
-Catch suspicious returns before they cost you money. The agent runs automated checks on every request.
+Catch suspicious returns before they cost you money. Configurable rules with automatic flagging.
 
-- **IP checks** — geolocation and consistency checks
-- **Velocity analysis** — repeated returns from the same customer
-- **Amount anomalies** — unusually large or frequent returns
-- **Automatic flagging** — suspicious requests are held for your review
+- **Custom rules UI** — max returns per customer (in N days), max value per return, blocked countries, suspicious email domains
+- **Velocity analysis** — repeated returns from the same customer within the time window
+- **Amount anomalies** — unusually large returns flagged for manual review
+- **Automatic flagging** — fraud-flagged returns stay **PENDING** for manual review (skip auto-approve)
+- **Fraud Signals** — every triggered rule creates a fraud signal with activity log entry
+- **MCP check_fraud tool** — AI agents can evaluate fraud rules autonomously
 
 ### 💰 Auto-Refund
 
@@ -84,8 +86,9 @@ See exactly what the AI is handling for you.
 
 Keep you and your customers informed automatically.
 
-- Email notifications on approve, deny, and refund
-- SMS alerts for high-priority events (Pro)
+- **Email notifications** on approve, deny, and refund — sent from `shopigent@greeknous.com` with branded logo
+- **Custom sender** — each email includes the store name and branded Shopigent Returns logo
+- **Email types**: Return received, Return approved (with refund amount), Return denied (with reason), Refund processed, Return shipping label
 
 ---
 
