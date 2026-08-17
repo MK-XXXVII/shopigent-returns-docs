@@ -152,6 +152,9 @@ function shell(body, slug = "") {
     .prose table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.9rem}
     .prose th,.prose td{padding:.6rem .8rem;text-align:left;border-bottom:1px solid var(--border)}
     .prose th{color:var(--text-strong);font-weight:600}
+    /* Responsive pricing grid */
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    @media(max-width:768px){.pricing-grid{grid-template-columns:1fr}}
     /* Responsive tables: scroll on mobile */
     .prose table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap}
     @media(max-width:640px){

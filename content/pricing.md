@@ -5,7 +5,7 @@ description: Affordable plans for businesses of all sizes. Free tier available.
 
 ## Plans & Pricing
 
-<div class="pricing-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:1rem 0 2rem">
+<div class="pricing-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:1rem 0 2rem">
 
 <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:16px">
   <div>
