@@ -5,18 +5,64 @@ description: Affordable plans for businesses of all sizes. Free tier available.
 
 ## Plans & Pricing
 
-| Feature | Free | Growth | Pro |
-|---------|------|--------|-----|
-| **Price** | $0/month | $9.99/month | $29/month |
-| **Returns/mo** | 10 | Unlimited | Unlimited |
-| **Policy Engine** | ✅ Basic | ✅ Full | ✅ Full |
-| **Auto-approve** | ❌ | ✅ | ✅ |
-| **Fraud Detection** | ❌ | ✅ Basic | ✅ Advanced |
-| **Auto-Refund** | ❌ | ✅ | ✅ |
-| **Label Generation** | ❌ | ❌ | ✅ |
-| **Email Notifications** | ❌ | ✅ | ✅ |
-| **Analytics** | ❌ | ✅ Basic | ✅ Full |
-| **MCP Access** | Read-only | ✅ Full | ✅ Full |
+<div class="pricing-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:1rem 0 2rem">
+
+<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:16px">
+  <div>
+    <div style="font-size:1.1rem;font-weight:700;color:var(--text-strong)">Free</div>
+    <div style="font-size:2rem;font-weight:800;color:var(--text-strong)">$0<span style="font-size:0.9rem;font-weight:400;color:var(--muted)">/month</span></div>
+    <div style="font-size:0.85rem;color:var(--muted)">AI-powered return management essentials.</div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;gap:8px;font-size:0.85rem">
+    <div>✓ 10 returns/month</div>
+    <div>✓ Basic policy engine</div>
+    <div>✓ Customer return portal</div>
+    <div>✓ MCP read-only access</div>
+    <div>✓ Email support</div>
+  </div>
+  <a href="https://apps.shopify.com" style="display:block;text-align:center;padding:10px 16px;border-radius:8px;border:1px solid var(--border);color:var(--text-strong);text-decoration:none;font-weight:600;font-size:0.9rem">Get started</a>
+</div>
+
+<div style="background:var(--card);border:2px solid #7C3AED;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:16px;position:relative">
+  <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#7C3AED;color:#fff;padding:2px 12px;border-radius:12px;font-size:0.7rem;font-weight:700">MOST POPULAR</div>
+  <div>
+    <div style="font-size:1.1rem;font-weight:700;color:var(--text-strong)">Growth</div>
+    <div style="font-size:2rem;font-weight:800;color:var(--text-strong)">$9.99<span style="font-size:0.9rem;font-weight:400;color:var(--muted)">/month</span></div>
+    <div style="font-size:0.85rem;color:var(--muted)">Automate returns with AI agents.</div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;gap:8px;font-size:0.85rem">
+    <div>✓ Unlimited returns</div>
+    <div>✓ Auto-approve policies</div>
+    <div>✓ Fraud detection</div>
+    <div>✓ Full MCP access (read + write)</div>
+    <div>✓ Refund execution</div>
+    <div>✓ Email notifications</div>
+    <div>✓ Analytics dashboard</div>
+    <div>✓ 7-day free trial</div>
+  </div>
+  <a href="https://apps.shopify.com" style="display:block;text-align:center;padding:10px 16px;border-radius:8px;background:#7C3AED;color:#fff;text-decoration:none;font-weight:600;font-size:0.9rem">Choose Growth</a>
+</div>
+
+<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:16px">
+  <div>
+    <div style="font-size:1.1rem;font-weight:700;color:var(--text-strong)">Pro</div>
+    <div style="font-size:2rem;font-weight:800;color:var(--text-strong)">$29<span style="font-size:0.9rem;font-weight:400;color:var(--muted)">/month</span></div>
+    <div style="font-size:0.85rem;color:var(--muted)">Everything automated — labels, exchanges, SMS.</div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;gap:8px;font-size:0.85rem">
+    <div>✓ Everything in Growth</div>
+    <div>✓ Label generation (SendCloud/Shippo/EasyPost)</div>
+    <div>✓ Exchange workflow</div>
+    <div>✓ SMS alerts</div>
+    <div>✓ Advanced fraud detection</div>
+    <div>✓ Full analytics + export</div>
+    <div>✓ Priority support</div>
+    <div>✓ 7-day free trial</div>
+  </div>
+  <a href="https://apps.shopify.com" style="display:block;text-align:center;padding:10px 16px;border-radius:8px;background:linear-gradient(135deg,#7C3AED,#10B981);color:#fff;text-decoration:none;font-weight:600;font-size:0.9rem">Choose Pro</a>
+</div>
+
+</div>
 
 ## Plan Details
 
